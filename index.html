@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TastyBite | Fresh Food, Fast Delivery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar" aria-label="Main navigation">
+            <a class="logo" href="#home"><img src="logo.png" alt="TastyBite"></a>
+            <form class="nav-search" role="search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="search" id="menu-search" placeholder="Search for burgers, pizza, rice..." autocomplete="off">
+            </form>
+            <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+            <ul class="nav-links">
+                <li><a class="active" href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="icon-button cart-toggle" type="button" aria-label="Open cart"><i class="fa-solid fa-bag-shopping"></i><span class="cart-count">0</span></button>
+                <button class="login-btn" type="button">Login</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <img src="hero.png" alt="Fresh food served at TastyBite">
+            <div class="hero-content">
+                <p class="hero-kicker">Fresh food marketplace</p>
+                <h1>Order restaurant-style food in minutes.</h1>
+                <p>Explore burgers, pizza, Indian comfort food and Indo-Chinese favourites from one clean, fast ordering screen.</p>
+                <div class="hero-actions">
+                    <a href="#menu" class="primary-cta">Order now</a>
+                    <span><i class="fa-solid fa-bolt"></i> Avg. delivery 30 min</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="features" aria-label="Why choose us">
+            <div class="feature-box"><i class="fas fa-motorcycle"></i><h3>Fast Delivery</h3><p>Fresh food delivered to your doorstep in around 30 minutes.</p></div>
+            <div class="feature-box"><i class="fas fa-utensils"></i><h3>Expert Chefs</h3><p>Every meal is made with care by experienced chefs.</p></div>
+            <div class="feature-box"><i class="fas fa-leaf"></i><h3>Fresh Ingredients</h3><p>Quality ingredients, balanced flavours, and food you can trust.</p></div>
+        </section>
+
+        <section class="popular-dishes" id="menu">
+            <p class="eyebrow">Our menu</p><h2 class="section-title">Popular Dishes</h2>
+            <p class="section-subtitle">Customer favourites prepared fresh when you order.</p>
+            <div class="filter-bar" role="group" aria-label="Filter menu">
+                <button class="filter active" data-filter="all">All</button><button class="filter" data-filter="burger">Burgers</button><button class="filter" data-filter="pizza">Pizza</button><button class="filter" data-filter="indian">Indian</button><button class="filter" data-filter="asian">Asian</button>
+            </div>
+            <p class="search-status" aria-live="polite"></p>
+            <div class="dish-container">
+                <article class="dish-card" data-category="burger"><div class="badge">Best Seller</div><img src="double_cheese_burger.jpg" alt="Double cheese burger"><div class="dish-content"><div class="dish-meta"><span><i class="fa-solid fa-star"></i> 4.8</span><span>25-30 min</span></div><h3>Double Cheese Burger</h3><p>Juicy patty, fresh vegetables and melted cheese.</p><div class="dish-footer"><span>Rs. 249</span><button class="add-to-cart" data-name="Double Cheese Burger" data-price="249">Add <i class="fa-solid fa-plus"></i></button></div></div></article>
+                <article class="dish-card" data-category="pizza"><div class="badge">Chef's Choice</div><img src="cheese_pizza.jpg" alt="Cheese pizza"><div class="dish-content"><div class="dish-meta"><span><i class="fa-solid fa-star"></i> 4.7</span><span>30-35 min</span></div><h3>Italian Cheese Pizza</h3><p>Wood-fired crust with mozzarella and fresh basil.</p><div class="dish-footer"><span>Rs. 399</span><button class="add-to-cart" data-name="Italian Cheese Pizza" data-price="399">Add <i class="fa-solid fa-plus"></i></button></div></div></article>
+                <article class="dish-card" data-category="indian"><div class="badge">New</div><img src="maasala_pasra.webp" alt="Masala pasta"><div class="dish-content"><div class="dish-meta"><span><i class="fa-solid fa-star"></i> 4.6</span><span>20-25 min</span></div><h3>Masala Pasta</h3><p>Creamy pasta tossed with a rich masala sauce.</p><div class="dish-footer"><span>Rs. 299</span><button class="add-to-cart" data-name="Masala Pasta" data-price="299">Add <i class="fa-solid fa-plus"></i></button></div></div></article>
+                <article class="dish-card" data-category="burger"><img src="mumbai_veg_burger.png" alt="Mumbai veg burger"><div class="dish-content"><div class="dish-meta"><span><i class="fa-solid fa-star"></i> 4.5</span><span>20-25 min</span></div><h3>Mumbai Veg Burger</h3><p>Spiced vegetable patty with crisp fresh toppings.</p><div class="dish-footer"><span>Rs. 189</span><button class="add-to-cart" data-name="Mumbai Veg Burger" data-price="189">Add <i class="fa-solid fa-plus"></i></button></div></div></article>
+                <article class="dish-card" data-category="asian"><img src="veg_friied_rice.jpg" alt="Veg fried rice"><div class="dish-content"><div class="dish-meta"><span><i class="fa-solid fa-star"></i> 4.6</span><span>25-30 min</span></div><h3>Veg Fried Rice</h3><p>Wok-tossed rice with colourful seasonal vegetables.</p><div class="dish-footer"><span>Rs. 219</span><button class="add-to-cart" data-name="Veg Fried Rice" data-price="219">Add <i class="fa-solid fa-plus"></i></button></div></div></article>
+                <article class="dish-card" data-category="asian"><img src="veg_manchurian.jpg" alt="Veg manchurian"><div class="dish-content"><div class="dish-meta"><span><i class="fa-solid fa-star"></i> 4.7</span><span>25-30 min</span></div><h3>Veg Manchurian</h3><p>Crisp vegetable dumplings in a tangy sauce.</p><div class="dish-footer"><span>Rs. 229</span><button class="add-to-cart" data-name="Veg Manchurian" data-price="229">Add <i class="fa-solid fa-plus"></i></button></div></div></article>
+            </div>
+        </section>
+
+        <section class="about-section" id="about"><div><p class="eyebrow">About TastyBite</p><h2>Good food brings people together.</h2><p>We make comforting favourites with fresh ingredients and deliver them straight from our kitchen to your table.</p></div><div class="about-stats"><div><strong>10k+</strong><span>Happy customers</span></div><div><strong>30 min</strong><span>Average delivery</span></div><div><strong>4.8/5</strong><span>Customer rating</span></div></div></section>
+
+        <section class="contact-section" id="contact"><div><p class="eyebrow">Get in touch</p><h2>We would love to hear from you.</h2><p><i class="fa-solid fa-location-dot"></i> 24 Food Street, Mumbai</p><p><i class="fa-solid fa-phone"></i> +91 98765 43210</p><p><i class="fa-solid fa-envelope"></i> hello@tastybite.in</p></div><form class="contact-form"><input type="text" placeholder="Your name" required><input type="email" placeholder="Email address" required><textarea placeholder="Your message" rows="4" required></textarea><button type="submit">Send Message</button><p class="form-message" aria-live="polite"></p></form></section>
+    </main>
+
+    <aside class="cart-panel" aria-label="Shopping cart"><div class="cart-header"><h2>Your order</h2><button class="close-cart icon-button" aria-label="Close cart"><i class="fa-solid fa-xmark"></i></button></div><div class="cart-items"><p class="empty-cart">Your cart is empty.</p></div><div class="cart-summary"><div><span>Total</span><strong class="cart-total">Rs. 0</strong></div><button class="checkout-btn" type="button">Proceed to checkout</button></div></aside><div class="overlay"></div>
+    <div class="modal login-modal" role="dialog" aria-modal="true" aria-labelledby="login-title"><div class="modal-content"><button class="close-modal icon-button" aria-label="Close login"><i class="fa-solid fa-xmark"></i></button><h2 id="login-title">Welcome back</h2><form class="login-form"><input type="email" placeholder="Email address" required><input type="password" placeholder="Password" required><button type="submit">Login</button><p class="form-message" aria-live="polite"></p></form></div></div>
+    <footer><div><a class="footer-logo" href="#home">TastyBite</a><p>Fresh flavours, delivered fast.</p></div><div class="social-links"><a href="#contact" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a><a href="#contact" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a><a href="#contact" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a></div><p class="copyright">&copy; <span class="year"></span> TastyBite. All rights reserved.</p></footer>
+    <script src="script.js"></script>
+</body>
+</html>
