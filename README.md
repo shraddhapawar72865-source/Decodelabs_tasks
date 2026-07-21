@@ -12,7 +12,6 @@ A responsive restaurant website built using HTML, CSS, and JavaScript.
 - Home Page
 - About Section
 - Menu Section
-- Food Gallery
 - Contact Section
 - Interactive User Interface
 
