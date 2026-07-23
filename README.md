@@ -1,29 +1,47 @@
+# TastyBite — Project 3 Database Integration
 
-# TastyBite API
+TastyBite is a responsive restaurant website upgraded from Project 2's JSON storage to MongoDB Atlas with Mongoose. The existing browser experience is preserved: it loads menu items, submits contact messages, and creates orders through the same API URLs.
 
-Project 2 submission for the DecodeLabs Full Stack Development internship. TastyBite pairs the original responsive food-ordering frontend with an Express API that handles real menu data, validated orders, and contact messages.
+## Project 3 features
 
-## Run locally
+- MongoDB Atlas connection through Mongoose and environment variables
+- Validated `Menu`, `Order`, and `Contact` schemas with timestamps and indexes
+- Full CRUD endpoints for menus, orders, and contact messages
+- Menu name search, category filter, and pagination
+- Dashboard totals for orders, non-cancelled revenue, and menu items
+- Centralized JSON error handling and request IDs
+- Automatic first-run seed of the six existing frontend dishes
+
+## Configure MongoDB Atlas
+
+1. Create a free MongoDB Atlas cluster and database user.
+2. In Atlas **Network Access**, add your current IP address for development.
+3. Copy `.env.example` to `.env` and replace the placeholder `MONGODB_URI` with the connection string from Atlas. Do not commit `.env`.
+4. Install and run the project:
 
 ```bash
 npm install
 npm start
 ```
 
-Open `http://localhost:3000`.
+Open `http://localhost:3000`. On the first successful database connection, the existing six menu dishes are inserted into MongoDB.
 
-## API
+## API reference
+
+All responses include `success` and `requestId`. List endpoints accept `page` (default `1`) and `limit` (default `20`, maximum `100`).
 
 | Method | Endpoint | Purpose |
 | --- | --- | --- |
-| GET | `/api/health` | Service health and timestamp |
-| GET | `/api/menu` | All menu items; supports `category` and `search` query parameters |
-| GET | `/api/menu/:id` | One menu item |
-| POST | `/api/orders` | Create a validated food order |
-| GET | `/api/orders/:id` | Retrieve a saved order |
-| POST | `/api/messages` | Submit a validated contact message |
+| GET | `/api/health` | API health check |
+| GET, POST | `/api/menu` | List/create menu items; accepts `search`, `category`, `page`, `limit` |
+| GET, PUT, DELETE | `/api/menu/:id` | Read/update/delete a menu item by slug |
+| GET, POST | `/api/orders` | List/create orders; accepts `status`, `page`, `limit` |
+| GET, PUT, DELETE | `/api/orders/:id` | Read/update/delete an order by `TB-...` number |
+| GET, POST | `/api/messages` | List/create contact messages |
+| GET, PUT, DELETE | `/api/messages/:id` | Read/update/delete a contact message |
+| GET | `/api/dashboard` | Total orders, revenue, and menu items |
 
-### Create an order
+### Example: create an order
 
 ```json
 {
@@ -33,29 +51,24 @@ Open `http://localhost:3000`.
 }
 ```
 
-The API uses consistent JSON envelopes, appropriate `200`, `201`, `400`, and `404` status codes, a request ID header/body field, payload-size protection, and centralized error handling. Demo submissions are stored in `data/store.json`, which is created automatically and intentionally ignored by Git
+## Project 2 → Project 3 changes
 
-# Decode Labs Internship
+### Modified existing files
 
-This repository contains the projects completed during my Full Stack Development Internship at Decode Labs.
+- `server.js`: replaced in-file arrays and JSON-file reads/writes with MongoDB startup and routes.
+- `package.json` and `package-lock.json`: added `mongoose` and `dotenv`.
+- `.gitignore`: protects `.env` in addition to dependencies and old local JSON storage.
+- `test.js`: tests the app shell and required Mongoose schema fields without needing a private Atlas connection.
+- `README.md`: documents the database setup and API.
 
-## Project 1: Restaurant Website
+### New files
 
-### Description
-A responsive restaurant website built using HTML, CSS, and JavaScript.
+- `config/db.js`
+- `models/Menu.js`, `models/Order.js`, `models/Contact.js`
+- `controllers/menuController.js`, `controllers/orderController.js`, `controllers/contactController.js`, `controllers/dashboardController.js`
+- `routes/menuRoutes.js`, `routes/orderRoutes.js`, `routes/contactRoutes.js`, `routes/dashboardRoutes.js`
+- `middleware/asyncHandler.js`, `middleware/errorHandler.js`
+- `data/defaultMenu.js`
+- `.env` (local only) and `.env.example` (safe GitHub template)
 
-### Features
-- Responsive Design
-- Home Page
-- About Section
-- Menu Section
-- Contact Section
-- Interactive User Interface
-
-### Technologies Used
-- HTML5
-- CSS3
-- JavaScript
-- Git
-- GitHub
-- VS Code
+The older Project 2 JSON files are not used by this version. MongoDB is the only runtime data store.

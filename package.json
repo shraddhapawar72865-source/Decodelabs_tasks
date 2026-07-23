@@ -1,11 +1,11 @@
 {
   "name": "tasty-bite",
   "version": "1.0.0",
-  "description": "this is the repo for my internship project.",
-  "main": "script.js",
+  "description": "TastyBite Project 3: MongoDB Atlas and Mongoose API integration.",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js",
+    "dev": "node --watch server.js",
     "test": "node --test"
   },
   "repository": {
@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/shraddhapawar72865-source/Decodelabs-internship#readme",
   "dependencies": {
-    "express": "^5.2.1"
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.8.0"
   }
 }
