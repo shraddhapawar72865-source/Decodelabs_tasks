@@ -1,0 +1,26 @@
+{
+  "name": "tasty-bite",
+  "version": "1.0.0",
+  "description": "this is the repo for my internship project.",
+  "main": "script.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node --test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shraddhapawar72865-source/Decodelabs-internship.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/shraddhapawar72865-source/Decodelabs-internship/issues"
+  },
+  "homepage": "https://github.com/shraddhapawar72865-source/Decodelabs-internship#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
