@@ -52,7 +52,8 @@ async function startServer() {
 
 if (require.main === module) {
   startServer().catch((error) => {
-    console.error(`Unable to start TastyBite API: ${error.message}`);
+    console.error("FULL ERROR:");
+    console.error(error);
     process.exit(1);
   });
 }
