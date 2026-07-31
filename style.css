@@ -372,6 +372,23 @@ a {
     min-height: 24px;
 }
 
+.menu-state {
+    grid-column: 1 / -1;
+    margin: 8px 0;
+    color: var(--muted);
+    text-align: center;
+}
+
+.menu-error {
+    color: #b42318;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: .65;
+    transform: none !important;
+}
+
 .dish-container {
     display: grid;
     gap: 22px;
@@ -906,5 +923,4 @@ footer p {
         border-bottom: 0;
     }
 }
-
 
