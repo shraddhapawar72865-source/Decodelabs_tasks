@@ -1,4 +1,5 @@
 const assert = require("node:assert/strict");
+const fs = require("node:fs");
 const test = require("node:test");
 const app = require("./server");
 const Menu = require("./models/Menu");
@@ -34,4 +35,13 @@ test("contact schema rejects invalid user input before database storage", async 
     assert.ok(validation.errors.message);
     return true;
   });
+});
+
+test("Project 4 browser integration requests API data and exposes user feedback states", () => {
+  const client = fs.readFileSync("script.js", "utf8");
+  assert.match(client, /request\('\/api\/messages'/);
+  assert.match(client, /request\('\/api\/orders'/);
+  assert.match(client, /\/api\/menu\?\$\{params\}/);
+  assert.match(client, /Loading today/);
+  assert.match(client, /We could not load the menu/);
 });

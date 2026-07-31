@@ -1,45 +1,70 @@
-# TastyBite — Project 3 Database Integration
+# TastyBite — DecodeLabs Full Stack Projects 1–4
 
-TastyBite is a responsive restaurant website upgraded from Project 2's JSON storage to MongoDB Atlas with Mongoose. The existing browser experience is preserved: it loads menu items, submits contact messages, and creates orders through the same API URLs.
+TastyBite is a responsive restaurant ordering website built during the DecodeLabs Full Stack Development internship. This repository contains the final, cumulative version of Projects 1–4: the frontend, Express API, MongoDB database layer, and browser-to-API integration.
 
-## Project 3 features
+## Project milestones
 
-- MongoDB Atlas connection through Mongoose and environment variables
-- Validated `Menu`, `Order`, and `Contact` schemas with timestamps and indexes
-- Full CRUD endpoints for menus, orders, and contact messages
-- Menu name search, category filter, and pagination
-- Dashboard totals for orders, non-cancelled revenue, and menu items
-- Centralized JSON error handling and request IDs
-- Automatic first-run seed of the six existing frontend dishes
+| Project | Internship requirement | TastyBite implementation |
+| --- | --- | --- |
+| **Project 1** | Responsive frontend interface using HTML, CSS, and JavaScript | Responsive restaurant UI, navigation, menu filters, search, cart, contact form, mobile menu, and accessible live-status areas. |
+| **Project 2** | Backend API development with GET/POST endpoints and input validation | Express server with menu, orders, contact messages, health, and dashboard API endpoints plus JSON errors and validation. |
+| **Project 3** | Database integration and CRUD operations | MongoDB Atlas with Mongoose `Menu`, `Order`, and `Contact` schemas; create, read, update, and delete API operations. |
+| **Project 4** | Frontend–backend integration with asynchronous requests, dynamic data, loading, and error handling | The browser loads and filters menu data from the API, creates orders and contact messages, and displays loading, success, empty, and error states. |
 
-## Configure MongoDB Atlas
+## Features
 
-1. Create a free MongoDB Atlas cluster and database user.
-2. In Atlas **Network Access**, add your current IP address for development.
-3. Copy `.env.example` to `.env` and replace the placeholder `MONGODB_URI` with the connection string from Atlas. Do not commit `.env`.
-4. Install and run the project:
+- Responsive restaurant website with menu browsing, search, category filtering, cart, checkout, and contact form
+- Dynamic menu data from `GET /api/menu`, including server-side search and category filtering
+- Asynchronous contact-message and order submissions with user-facing loading and error feedback
+- MongoDB/Mongoose schemas with validation, timestamps, indexes, and default menu seeding
+- CRUD APIs for menus, orders, and contact messages
+- Dashboard totals, request IDs, centralized error handling, and a health endpoint
 
-```bash
-npm install
-npm start
-```
+## Technology
 
-Open `http://localhost:3000`. On the first successful database connection, the existing six menu dishes are inserted into MongoDB.
+- Frontend: HTML, CSS, vanilla JavaScript
+- Backend: Node.js and Express
+- Database: MongoDB Atlas and Mongoose
+
+## Run locally
+
+1. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+2. Copy `.env.example` to `.env`, then enter your MongoDB Atlas connection string:
+
+   ```env
+   PORT=3000
+   MONGODB_URI=your_mongodb_connection_string
+   ```
+
+3. Start the application:
+
+   ```bash
+   npm start
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000).
+
+On the first successful database connection, TastyBite seeds its initial six menu dishes. Never upload your `.env` file because it contains private database credentials.
 
 ## API reference
 
-All responses include `success` and `requestId`. List endpoints accept `page` (default `1`) and `limit` (default `20`, maximum `100`).
+All JSON responses include `success` and `requestId`. List endpoints accept `page` (default `1`) and `limit` (default `20`, maximum `100`).
 
 | Method | Endpoint | Purpose |
 | --- | --- | --- |
 | GET | `/api/health` | API health check |
-| GET, POST | `/api/menu` | List/create menu items; accepts `search`, `category`, `page`, `limit` |
-| GET, PUT, DELETE | `/api/menu/:id` | Read/update/delete a menu item by slug |
-| GET, POST | `/api/orders` | List/create orders; accepts `status`, `page`, `limit` |
-| GET, PUT, DELETE | `/api/orders/:id` | Read/update/delete an order by `TB-...` number |
+| GET, POST | `/api/menu` | List/create menu items; supports `search`, `category`, `page`, `limit` |
+| GET, PUT, DELETE | `/api/menu/:id` | Read/update/delete one menu item by slug |
+| GET, POST | `/api/orders` | List/create orders; supports `status`, `page`, `limit` |
+| GET, PUT, DELETE | `/api/orders/:id` | Read/update/delete one order by order number |
 | GET, POST | `/api/messages` | List/create contact messages |
-| GET, PUT, DELETE | `/api/messages/:id` | Read/update/delete a contact message |
-| GET | `/api/dashboard` | Total orders, revenue, and menu items |
+| GET, PUT, DELETE | `/api/messages/:id` | Read/update/delete one contact message |
+| GET | `/api/dashboard` | Order, revenue, and menu-item totals |
 
 ### Example: create an order
 
@@ -51,24 +76,14 @@ All responses include `success` and `requestId`. List endpoints accept `page` (d
 }
 ```
 
-## Project 2 → Project 3 changes
+## Verify the project
 
-### Modified existing files
+Run the automated backend and integration checks with:
 
-- `server.js`: replaced in-file arrays and JSON-file reads/writes with MongoDB startup and routes.
-- `package.json` and `package-lock.json`: added `mongoose` and `dotenv`.
-- `.gitignore`: protects `.env` in addition to dependencies and old local JSON storage.
-- `test.js`: tests the app shell and required Mongoose schema fields without needing a private Atlas connection.
-- `README.md`: documents the database setup and API.
+```bash
+npm test
+```
 
-### New files
+## Repository
 
-- `config/db.js`
-- `models/Menu.js`, `models/Order.js`, `models/Contact.js`
-- `controllers/menuController.js`, `controllers/orderController.js`, `controllers/contactController.js`, `controllers/dashboardController.js`
-- `routes/menuRoutes.js`, `routes/orderRoutes.js`, `routes/contactRoutes.js`, `routes/dashboardRoutes.js`
-- `middleware/asyncHandler.js`, `middleware/errorHandler.js`
-- `data/defaultMenu.js`
-- `.env` (local only) and `.env.example` (safe GitHub template)
-
-The older Project 2 JSON files are not used by this version. MongoDB is the only runtime data store.
+GitHub: [shraddhapawar72865-source/Decodelabs_tasks](https://github.com/shraddhapawar72865-source/Decodelabs_tasks)

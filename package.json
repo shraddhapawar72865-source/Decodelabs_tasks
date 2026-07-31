@@ -1,7 +1,7 @@
 {
   "name": "tasty-bite",
   "version": "1.0.0",
-  "description": "TastyBite Project 3: MongoDB Atlas and Mongoose API integration.",
+  "description": "TastyBite — DecodeLabs Full Stack Projects 1–4.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
